@@ -18,16 +18,58 @@ import './Board.css';
 
 class Board extends Component {
     static defaultProps = {
-        nrows: 3,
-        ncols: 3,
+        nrows: 5,
+        ncols: 5,
         chanceLightStartsOn: 0.25
     }
     constructor(props) {
         super(props);
         this.state = {
             hasWon: false,
-            board: [[true, true, false], [false, true, false], [false, false, false]]
+            board: this.createBoard()
         };
+    }
+
+    /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
+
+    createBoard() {
+        let board = [];
+        for(let y = 0; y < this.props.nrows; y++) {
+            let row = [];
+            for (let x = 0; x < this.props.ncols; x++) {
+                row.push(Math.random() < this.props.chanceLightStartsOn);
+            }
+            board.push(row);
+        }
+        return board;
+    }
+
+    /** handle changing a cell: update board & determine if winner */
+
+    flipCellsAround(coord) {
+        let {ncols, nrows} = this.props;
+        let board = this.state.board;
+        let [y, x] = coord.split("-").map(Number);
+
+
+        function flipCell(y, x) {
+            // if this coord is actually on board, flip it
+
+            if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
+                board[y][x] = !board[y][x];
+            }
+        }
+
+        // flip this cell and the cells around it
+        flipCell(y, x); // flip initial cell
+        flipCell(y, x - 1); // flip left
+        flipCell(y, x + 1); // flip right
+        flipCell(y - 1, x); // flip below
+        flipCell(y + 1, x); // flip above
+
+        let hasWon = false;
+
+        this.setState({board, hasWon});
     }
 
     /** Create game board based on board state */
@@ -41,6 +83,7 @@ class Board extends Component {
                     <Cell
                         key={coord}
                         isLit={this.state.board[y][x]}
+                        flipCellsAroundMe={() => this.flipCellsAround(coord)}
                     />
                 );
             }
@@ -57,6 +100,10 @@ class Board extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <div>Lights</div>
+                    <div>Out</div>
+                </div>
                 {this.makeTable()}
             </div>
         );
