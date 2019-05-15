@@ -3,11 +3,13 @@ import "./Cell.css"
 
 
 /** A single cell on the board. */
+
 class Cell extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
+
 
     handleClick(evt) {
         // call up to the board to flip cells around this cell
