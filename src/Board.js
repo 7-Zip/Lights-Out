@@ -3,7 +3,7 @@ import Cell from "./Cell";
 import './Board.css';
 
 
-/** Game board of Lights out.
+/** Game board for Lights out.
  *
  * Properties:
  * - nrows: number of rows of board
@@ -31,7 +31,6 @@ class Board extends Component {
     }
 
     /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
-
     createBoard() {
         let board = [];
         for(let y = 0; y < this.props.nrows; y++) {
@@ -45,7 +44,6 @@ class Board extends Component {
     }
 
     /** handle changing a cell: update board & determine if winner */
-
     flipCellsAround(coord) {
         let {ncols, nrows} = this.props;
         let board = this.state.board;
@@ -102,15 +100,15 @@ class Board extends Component {
         return (
             <div>
                 {this.state.hasWon ? (
-                    <div>
-                        <span>YOU</span>
-                        <span>WIN!</span>
+                    <div className={"winner"}>
+                        <span className={"neon-orange"}>YOU</span>
+                        <span className={"neon-blue"}>WIN!</span>
                     </div>
                 ) : (
                     <div>
-                        <div>
-                            <div>Lights</div>
-                            <div>Out</div>
+                        <div className={"Board-title"}>
+                            <div className={"neon-orange"}>Lights</div>
+                            <div className={"neon-blue"}>Out</div>
                         </div>
                         {this.makeTable()}
                     </div>
