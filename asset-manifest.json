@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Lights-Out/static/css/main.c16dd05b.chunk.css",
+    "main.js": "/Lights-Out/static/js/main.04faf129.chunk.js",
+    "main.js.map": "/Lights-Out/static/js/main.04faf129.chunk.js.map",
+    "runtime~main.js": "/Lights-Out/static/js/runtime~main.daba1e25.js",
+    "runtime~main.js.map": "/Lights-Out/static/js/runtime~main.daba1e25.js.map",
+    "static/js/2.63a3d80a.chunk.js": "/Lights-Out/static/js/2.63a3d80a.chunk.js",
+    "static/js/2.63a3d80a.chunk.js.map": "/Lights-Out/static/js/2.63a3d80a.chunk.js.map",
+    "index.html": "/Lights-Out/index.html",
+    "precache-manifest.383a544e83435d19c466813b0a808740.js": "/Lights-Out/precache-manifest.383a544e83435d19c466813b0a808740.js",
+    "service-worker.js": "/Lights-Out/service-worker.js",
+    "static/css/main.c16dd05b.chunk.css.map": "/Lights-Out/static/css/main.c16dd05b.chunk.css.map"
+  }
+}
